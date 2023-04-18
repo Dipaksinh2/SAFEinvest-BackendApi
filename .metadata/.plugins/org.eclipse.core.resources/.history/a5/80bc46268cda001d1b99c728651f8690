@@ -1,0 +1,5 @@
+package com.safeinvest.empDAO;
+
+public interface empRepository {
+
+}

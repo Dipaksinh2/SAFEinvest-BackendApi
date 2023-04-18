@@ -1,0 +1,74 @@
+package com.safeinvest.empDAO;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.safeinvest.empData.empDetails;
+
+@Repository
+public class empRepo implements empRepository {
+
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
+
+	private static final String CREATE_TABLE_QUERY = "CREATE TABLE IF NOT EXISTS employee_master ( emp_code int NOT NULL,"
+			+ "emp_firstname varchar(45) DEFAULT NULL," + "emp_middlename varchar(45) DEFAULT NULL,"
+			+ "emp_lastname varchar(45) DEFAULT NULL," + "emp_mobile_no varchar(45) DEFAULT NULL,"
+			+ "emp_phone_no varchar(45) DEFAULT NULL," + "emp_email_id varchar(45) DEFAULT NULL,"
+			+ "emp_address varchar(150) DEFAULT NULL," + "emp_city varchar(45) DEFAULT NULL,"
+			+ "emp_state varchar(45) DEFAULT NULL," + "emp_country varchar(45) DEFAULT NULL,"
+			+ "PRIMARY KEY (emp_code)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci";
+
+	private static final String SELECT_ALL_EMPLOYEES="SELECT * FROM employee_db.employee_master";
+	
+	private static final String INSERT_EMPLOYEE_DATA="INSERT INTO employee_db.employee_master "
+			+ "(emp_code, emp_firstname, emp_middlename, emp_lastname, emp_mobile_no, "
+			+ "emp_phone_no, emp_email_id, emp_address, emp_city, emp_state, emp_country) "
+			+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+//	private static final String UPDATE_EMPLOYEE_DETAIL;
+	private static final String DELETE_EMPLOYEE_DATA ="delete from employee_db.employee_master where emp_code=?";
+	private static final String SELECT_EMPLOYEE_BY_EMP_CODE="SELECT * FROM employee_db.employee_master where emp_code=?";
+
+	
+	
+	
+	
+	public int createTable() {
+		int update = this.jdbcTemplate.update(CREATE_TABLE_QUERY);
+		return update;
+	}
+
+	@Override
+	public empDetails saveEmployees(empDetails empdetails) {
+
+		return null;
+	}
+
+	@Override
+	public empDetails updateEmployees() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public empDetails getEmployeeByID(int emp_code) {
+
+		return null;
+	}
+
+	@Override
+	public List<empDetails> getEmployeesDetails() {
+		this.jdbcTemplate.update(SELECT_ALL_EMPLOYEES);
+		return 
+	}
+
+	@Override
+	public empDetails deleteEmployeeById(int emp_code) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

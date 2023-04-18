@@ -1,0 +1,21 @@
+package com.safeinvest.empDAO;
+
+import java.util.List;
+
+import com.safeinvest.empData.empDetails;
+
+public interface empRepository {
+
+	int createTable();
+
+	empDetails saveEmployees(empDetails empdetails);
+
+	empDetails updateEmployees();
+
+	empDetails getEmployeeByID(int emp_code);
+
+	List<empDetails> getEmployeesDetails();
+
+	empDetails deleteEmployeeById(int emp_code);
+
+}
